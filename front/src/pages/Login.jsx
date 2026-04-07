@@ -78,7 +78,7 @@ function Login() {
 
             </form>
 
-            <Link to="cadastro/">Não tenho uma conta</Link>
+            <Link to="/cadastro">Não tenho uma conta</Link>
 
         </div>
       </main>

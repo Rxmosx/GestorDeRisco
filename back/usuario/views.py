@@ -64,3 +64,16 @@ def fazer_login(request):
             }, status=500)
 
     return JsonResponse({'erro': 'Método não permitido'}, status=405)
+
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+@api_view(['POST'])
+def cadastrar_usuario(request):
+    serializer = UsuarioSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+
+    return Response(serializer.errors, status=400)
